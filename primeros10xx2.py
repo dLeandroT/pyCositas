@@ -1,12 +1,21 @@
 def run():
 
-    cuadrados = []
 
-    for i in range(1, 11):
-        cuadrados.append(i**2)
+# Con Ciclo
+    # cuadrados = []
 
-    for item in cuadrados:
-        print(item)
+    # for i in range(1, 11):
+    #     if i % 3 == 0:
+    #         continue    
+    #     else:
+    #         cuadrados.append(i**2)
+
+    # print(cuadrados)
+
+# Con Comprehension
+    cuadrados = [i for i in range(0, 11) if i % 3 != 0]
+    print(cuadrados)
+
 
 
 
