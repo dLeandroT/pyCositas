@@ -78,12 +78,14 @@ def run():
     Dominantes de Python
     Mayores de 25
     """
+
     # Trabajadores en Platzi
     #trabajadores_platzi = list(lambda data: for key, value in [i for i in data]: if value == "Platzi")
 
+    # con LOOP
     trabajadores = 0
     for trabajador in DATA:
-        for key, value in trabajador.items():
+        for value in trabajador.items():
             # print(value)
             if value == "Platzi":
                 trabajadores += 1
