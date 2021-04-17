@@ -83,7 +83,8 @@ def run():
     """
 
     ### Trabajadores en Platzi
-    print("\n-- Trabajan en Platzi\n")
+    print("\n\n-- Trabajan en Platzi\n")
+
     # con LOOP
     trabajadores = []
     for trabajador in DATA:
@@ -92,13 +93,20 @@ def run():
             trabajadores.append(name)
     print(f"Filtrado con LOOP\n  {trabajadores}\n")
 
-    # Con DictComprehensions
+    # Con Comprehensions
     platzi_workers = [workers["name"] for workers in DATA 
         if workers["organization"] == "Platzi"]
     print(f"Filtrado con DictComprehensions\n   {platzi_workers}\n")
 
+    # Con High Order Functions
+    trabaja_platzi = list(filter(lambda trabaja: trabaja["organization"] == "Platzi" , DATA))
+    trabaja_platzi = list(map (lambda trabaja: trabaja["name"], trabaja_platzi)) 
+    print(f"Filtrado con HOF\n   {trabaja_platzi}")
+
+
+
     ### Dominantes de python
-    print("\n-- Dominan Python\n")
+    print("\n\n-- Dominan Python\n")
     # Con LOOP
     python_pros = []
     for pro in DATA:
@@ -106,13 +114,15 @@ def run():
         if pro["language"] == "python":
             python_pros.append(name)
     print(f"Filtrado con LOOP\n  {python_pros}\n")
-
-    # Con DictComprehensions
+    # Con Comprehensions
     python_pro = [workers["name"] for workers in DATA if workers["language"] == "python"]
     print(f"Filtrado con DictComprehensions\n   {python_pro}\n")
 
+
+
+
     ### Mayores de 25 
-    print("\n-- Tienen mas de 25\n")
+    print("\n\n-- Tienen mas de 25\n")
     # Con LOOP
 
     #Con High Order Functions
