@@ -74,14 +74,13 @@ def run():
 
     """
     Con los datos anteriores, Filtrar por:
-    Trabajadores en PLatzi
+    Trabajadores en Platzi
     Dominantes de Python
     Mayores de 25
     """
 
-    # Trabajadores en Platzi
-    #trabajadores_platzi = list(lambda data: for key, value in [i for i in data]: if value == "Platzi")
-
+    ### Trabajadores en Platzi
+    print("-- Trabajan en Platzi")
     # con LOOP
     trabajadores = []
     for trabajador in DATA:
@@ -90,11 +89,23 @@ def run():
             trabajadores.append(name)
     print(f"Filtrado con LOOP\n  {trabajadores}\n")
 
-
     # Con DictComprehensions
     platzi_workers = [workers["name"] for workers in DATA if workers["organization"] == "Platzi"]
     print(f"Filtrado con DictComprehensions\n   {platzi_workers}\n")
 
+    ### Dominantes de python
+    print("-- Dominan Python")
+    # Con LOOP
+    python_pros = []
+    for pro in DATA:
+        name = pro["name"]
+        if pro["language"] == "python":
+            python_pros.append(name)
+    print(f"Filtrado con LOOP\n  {python_pros}\n")
+
+    # Con DictComprehensions
+    python_pro = [workers["name"] for workers in DATA if workers["language"] == "python"]
+    print(f"Filtrado con DictComprehensions\n   {python_pro}\n")
 
 if __name__ == '__main__':
     run()
