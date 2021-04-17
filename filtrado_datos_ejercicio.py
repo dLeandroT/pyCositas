@@ -83,16 +83,17 @@ def run():
     #trabajadores_platzi = list(lambda data: for key, value in [i for i in data]: if value == "Platzi")
 
     # con LOOP
-    trabajadores = 0
+    trabajadores = []
     for trabajador in DATA:
-        for value in trabajador.items():
-            # print(value)
-            if value == "Platzi":
-                trabajadores += 1
-    print(f"Filtrado con LOOP\n   Hay {trabajadores} trabajadores de Platzi")
+        name = trabajador["name"]
+        if trabajador["organization"] == "Platzi":
+            trabajadores.append(name)
+    print(f"Filtrado con LOOP\n  {trabajadores}\n")
 
 
-
+    # Con DictComprehensions
+    platzi_workers = [workers["name"] for workers in DATA if workers["organization"] == "Platzi"]
+    print(f"Filtrado con DictComprehensions\n   {platzi_workers}\n")
 
 
 if __name__ == '__main__':
