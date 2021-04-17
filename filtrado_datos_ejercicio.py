@@ -114,9 +114,15 @@ def run():
         if pro["language"] == "python":
             python_pros.append(name)
     print(f"Filtrado con LOOP\n  {python_pros}\n")
+
     # Con Comprehensions
     python_pro = [workers["name"] for workers in DATA if workers["language"] == "python"]
     print(f"Filtrado con DictComprehensions\n   {python_pro}\n")
+
+    # Con HOF
+    dominan_python = list(filter(lambda dompy: dompy["language"] == "python", DATA))
+    dominan_python = list(map(lambda dompy: dompy["name"], dominan_python))
+    print(f"Filtrado Por HOF\n   {dominan_python}")
 
 
 
