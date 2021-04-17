@@ -77,10 +77,13 @@ def run():
     Trabajadores en Platzi
     Dominantes de Python
     Mayores de 25
+
+    Tambien >  Crear un key adicional llamado old. Sera True si la 
+        edad es mayor a 50, de contrario False.
     """
 
     ### Trabajadores en Platzi
-    print("-- Trabajan en Platzi")
+    print("\n-- Trabajan en Platzi\n")
     # con LOOP
     trabajadores = []
     for trabajador in DATA:
@@ -90,11 +93,12 @@ def run():
     print(f"Filtrado con LOOP\n  {trabajadores}\n")
 
     # Con DictComprehensions
-    platzi_workers = [workers["name"] for workers in DATA if workers["organization"] == "Platzi"]
+    platzi_workers = [workers["name"] for workers in DATA 
+        if workers["organization"] == "Platzi"]
     print(f"Filtrado con DictComprehensions\n   {platzi_workers}\n")
 
     ### Dominantes de python
-    print("-- Dominan Python")
+    print("\n-- Dominan Python\n")
     # Con LOOP
     python_pros = []
     for pro in DATA:
@@ -106,6 +110,13 @@ def run():
     # Con DictComprehensions
     python_pro = [workers["name"] for workers in DATA if workers["language"] == "python"]
     print(f"Filtrado con DictComprehensions\n   {python_pro}\n")
+
+    ### Mayores de 25 
+    print("\n-- Tienen mas de 25\n")
+    # Con LOOP
+
+    #Con High Order Functions
+    
 
 if __name__ == '__main__':
     run()
