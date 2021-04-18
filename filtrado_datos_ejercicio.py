@@ -91,17 +91,17 @@ def run():
         name = trabajador["name"]
         if trabajador["organization"] == "Platzi":
             trabajadores.append(name)
-    print(f"Filtrado con LOOP\n  {trabajadores}\n")
+    print(f"Con LOOP\n  {trabajadores}\n")
 
     # Con Comprehensions
     platzi_workers = [workers["name"] for workers in DATA 
         if workers["organization"] == "Platzi"]
-    print(f"Filtrado con DictComprehensions\n   {platzi_workers}\n")
+    print(f"Con DictComprehensions\n   {platzi_workers}\n")
 
     # Con High Order Functions
     trabaja_platzi = list(filter(lambda trabaja: trabaja["organization"] == "Platzi" , DATA))
     trabaja_platzi = list(map (lambda trabaja: trabaja["name"], trabaja_platzi)) 
-    print(f"Filtrado con HOF\n   {trabaja_platzi}")
+    print(f"Con HOF\n   {trabaja_platzi}")
 
 
 
@@ -113,16 +113,16 @@ def run():
         name = pro["name"]
         if pro["language"] == "python":
             python_pros.append(name)
-    print(f"Filtrado con LOOP\n  {python_pros}\n")
+    print(f"Con LOOP\n  {python_pros}\n")
 
     # Con Comprehensions
     python_pro = [workers["name"] for workers in DATA if workers["language"] == "python"]
-    print(f"Filtrado con DictComprehensions\n   {python_pro}\n")
+    print(f"Con DictComprehensions\n   {python_pro}\n")
 
     # Con HOF
     dominan_python = list(filter(lambda dompy: dompy["language"] == "python", DATA))
     dominan_python = list(map(lambda dompy: dompy["name"], dominan_python))
-    print(f"Filtrado Por HOF\n   {dominan_python}")
+    print(f"Por HOF\n   {dominan_python}")
 
 
 
@@ -130,8 +130,19 @@ def run():
     ### Mayores de 25 
     print("\n\n-- Tienen mas de 25\n")
     # Con LOOP
+    personas = []
+    for persona in DATA:
+        if int(persona["age"]) > 25:
+            personas.append(persona["name"])
+    print(f"por LOOP\n   {personas}\n")
 
+    # Con Compehensions
+    pMayores = [personas["name"] for personas in DATA if int(personas["age"]) > 25]
+    print(f"con Comprehensions\n   {pMayores}\n")
     #Con High Order Functions
+    personas_mayores = list(filter(lambda personas: int(personas["age"]) > 25, DATA))
+    personas_mayores = list(map(lambda personas: personas["name"], personas_mayores))
+    print(f"con HOF\n   {personas_mayores}\n")
     
 
 if __name__ == '__main__':
