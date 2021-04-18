@@ -79,7 +79,7 @@ def run():
     Mayores de 25
 
     Tambien >  Crear un key adicional llamado old. Sera True si la 
-        edad es mayor a 50, de contrario False.
+        edad es mayor a 70, de contrario False.
     """
 
     ### Trabajadores en Platzi
@@ -133,7 +133,6 @@ def run():
 
 
 
-
     ### Mayores de 25 
     print("\n\n-- Tienen mas de 25\n")
     personas_mayores_25 = []
@@ -141,20 +140,35 @@ def run():
     # Con LOOP
     personas_mayores_25.clear()
     for person in DATA:
-        if int(person["age"]) > 25:
+        if person["age"] > 25:
             personas_mayores_25.append(person["name"])
     print(f"por LOOP\n   {personas_mayores_25}\n")
 
     # Con Compehensions
     personas_mayores_25.clear()
-    personas_mayores_25 = [person["name"] for person in DATA if int(person["age"]) > 25]
+    personas_mayores_25 = [person["name"] for person in DATA if person["age"] > 25]
     print(f"con Comprehensions\n   {personas_mayores_25}\n")
 
     #Con High Order Functions
     personas_mayores_25.clear()
-    personas_mayores_25 = list(filter(lambda person: int(person["age"]) > 25, DATA))
+    personas_mayores_25 = list(filter(lambda person: person["age"] > 25, DATA))
     personas_mayores_25 = list(map(lambda person: person["name"], personas_mayores_25))
     print(f"con HOF\n   {personas_mayores_25}\n")
+
+
+
+
+    """Compatible desed pyhton 3.9 en adelante"""
+    ### old people
+    print("\n\n-- Old People Tag")
+
+    # con Comprehensions
+    # old_people.clear()
+    old_people = [person | {"old": person["age"] > 70} for person in DATA]
+    print(old_people)
+
+    # con HOF
+    #   old_people = list(map(lambda person: person | {"old": person["age"] > 70}, DATA))
     
 
 
