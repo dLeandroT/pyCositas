@@ -3,9 +3,14 @@ def divisors(num):
     return divisors
 
 def run():
-    num = int(input("ingresa un numero entereo:   "))
-    print(divisors(num))
-    
+    try:
+        num = int(input("ingresa un numero entereo:   "))
+        if num < 0:
+            raise ValueError("-- Debes ingresar un numero Positivo")
+        print(divisors(num))
+    except ValueError:
+        print("---  Deber ingresar un numero")
+        
 
 
 
