@@ -1,12 +1,27 @@
 import os
 
+def imprimir(archivo):
+    """
+    archivo = "ruta del archivo entre comillas"
+     ej.:    imprimir("./directorio/archivo.txt") 
+    """
+    with open(archivo, "r", encoding="utf-8") as f:
+        for line in f:
+            print(line)
+        f.close()
+
 
 def draw_bienvenida():
     os.system("clear")
-    print("###################################################")
-    print("--- B I E N V E N I D O   A L   A H O R C A D O ---")
-    print("###################################################\n\n\n")
-    input("Presiona enter para empezar...\n\n\n")
+    imprimir("./bienvenida.txt")
+    input("\n\n\nPresiona ENTER para continuar...")
+        
+    # Imprimir instrucciones
+    print("\n\n")
+    imprimir("./instrucciones.txt")
+    input("\n\nPresiona ENTER para continuar...")
+
+
 
     
 
