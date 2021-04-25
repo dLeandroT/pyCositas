@@ -30,7 +30,7 @@ def quitar_acento(letra):
     for key, value in remplazos.items():
         if letra == key:
             letra = value
-    retun (letra)
+    return (letra)
 
 
 def choose_word():
@@ -39,10 +39,14 @@ def choose_word():
         f.close()
     palabra = random.choice(secret_words)
     palabra  = palabra.upper()
+    #  LIsta vacia para almacenar cada letra revisada
+    palabra_revisada = []
     for letra in palabra:
-        quitar_acento(letra)
-    print(palabra)    
-    return palabra
+        letra = quitar_acento(letra)
+        palabra_revisada.append(letra)
+    # Despues de revisa y quitar acentos, unir en un solo string 
+    palabra = "".join(palabra_revisada)
+    return palabra  
 
     
     
