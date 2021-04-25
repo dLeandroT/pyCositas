@@ -25,6 +25,14 @@ def draw_bienvenida():
     input("\n\nPresiona ENTER para continuar...")
 
 
+def draw_progress(progress):
+    os.system("clear")
+    print("### A D I V I N A   L A   P A L A B R A ###\n\n\n", end="\t\t")
+    for i in progress:
+        print(i, end=" ")
+    print("\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n")
+
+
 def quitar_acento(letra):
     remplazos = {'Á':'A', 'É':'E', 'Í':'I', 'Ó':'O', 'Ú':'U'}
     for key, value in remplazos.items():
@@ -55,13 +63,19 @@ def choose_word():
 def run():
     draw_bienvenida()
     secret_word = choose_word()
+    hidden_word = []
+    for i in range (len(secret_word)):
+        hidden_word.append("_")
+
     # Gamelooop 
     is_gameover = False
     while not is_gameover:
         os.system("clear")
+        draw_progress(hidden_word)
         # Pendiente imprimir el estado del colgado
-        letra = input(" Ingresa una letra:  ")
+        letra = input("Ingresa una letra:  ")
         quitar_acento(letra)
+        
         
        
 
