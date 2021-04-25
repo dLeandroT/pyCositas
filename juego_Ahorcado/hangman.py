@@ -64,7 +64,9 @@ def run():
     draw_bienvenida()
     secret_word = choose_word()
     hidden_word = []
-    for i in range (len(secret_word)):
+    letras_ocultas = len(secret_word)
+    
+    for i in range(letras_ocultas):
         hidden_word.append("_")
 
     # Gamelooop 
@@ -73,16 +75,22 @@ def run():
         os.system("clear")
         draw_progress(hidden_word)
         # Pendiente imprimir el estado del colgado
-        letra_ingresada = input("Ingresa una letra:  ")
-        quitar_acento(letra)
+        letra_ingresada = input("Ingresa una letra:  ").upper()
+        quitar_acento(letra_ingresada)
         
         # Comprobar la Letra
         idx = 0
         for word in secret_word:
             if letra_ingresada == word:
                 hidden_word[idx] = letra_ingresada
+                letras_ocultas -= 1
             idx += 1
+
+        # Comprobar si hay victoria
+        if letras_ocultas == 0:
+            is_gameover = True
         
+    print("  VICTORIA!!\n Ganaste")
        
 
         
