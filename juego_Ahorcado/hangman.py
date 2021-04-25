@@ -39,10 +39,7 @@ def draw_victoria(secret_word):
     for letra in secret_word:
         print(letra, end=" ")
     print("")
-    with open("./victoria.txt", "r", encoding="utf-8") as f:
-        for line in f:
-            print(line)
-        f.close()
+    imprimir("./victoria.txt")
     
 
 
@@ -76,18 +73,15 @@ def choose_word():
 def run():
     draw_bienvenida()
     secret_word = choose_word()
-    hidden_word = []
     letras_ocultas = len(secret_word)
+    hidden_word = ["_" for i in range(letras_ocultas)]
     
-    for i in range(letras_ocultas):
-        hidden_word.append("_")
 
     # Gamelooop 
     is_gameover = False
     while not is_gameover:
         os.system("clear")
         draw_progress(hidden_word)
-        # Pendiente imprimir el estado del colgado
         letra_ingresada = input("Ingresa una letra:  ").upper()
         quitar_acento(letra_ingresada)
         
@@ -105,8 +99,6 @@ def run():
         
     draw_victoria(secret_word)
        
-
-        
 
 
 
