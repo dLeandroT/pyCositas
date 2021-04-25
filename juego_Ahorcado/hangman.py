@@ -73,9 +73,15 @@ def run():
         os.system("clear")
         draw_progress(hidden_word)
         # Pendiente imprimir el estado del colgado
-        letra = input("Ingresa una letra:  ")
+        letra_ingresada = input("Ingresa una letra:  ")
         quitar_acento(letra)
         
+        # Comprobar la Letra
+        idx = 0
+        for word in secret_word:
+            if letra_ingresada == word:
+                hidden_word[idx] = letra_ingresada
+            idx += 1
         
        
 
