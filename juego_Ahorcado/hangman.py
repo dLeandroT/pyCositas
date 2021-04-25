@@ -25,10 +25,24 @@ def draw_bienvenida():
     input("\n\nPresiona ENTER para continuar...")
 
 
+def quitar_acento(letra):
+    remplazos = {'Á':'A', 'É':'E', 'Í':'I', 'Ó':'O', 'Ú':'U'}
+    for key, value in remplazos.items():
+        if letra == key:
+            letra = value
+    retun (letra)
+
+
 def choose_word():
     with open("./palabras.txt", "r", encoding="utf-8") as f:
         secret_words = [line.strip() for line in f]
-    return random.choice(secret_words)
+        f.close()
+    palabra = random.choice(secret_words)
+    palabra  = palabra.upper()
+    for letra in palabra:
+        quitar_acento(letra)
+    print(palabra)    
+    return palabra
 
     
     
@@ -43,6 +57,8 @@ def run():
         os.system("clear")
         # Pendiente imprimir el estado del colgado
         letra = input(" Ingresa una letra:  ")
+        quitar_acento(letra)
+        
        
 
         
