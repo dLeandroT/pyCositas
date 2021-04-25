@@ -33,6 +33,19 @@ def draw_progress(progress):
     print("\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n")
 
 
+def draw_victoria(secret_word):
+    os.system("clear")
+    print("\n", end="\t\t")
+    for letra in secret_word:
+        print(letra, end=" ")
+    print("")
+    with open("./victoria.txt", "r", encoding="utf-8") as f:
+        for line in f:
+            print(line)
+        f.close()
+    
+
+
 def quitar_acento(letra):
     remplazos = {'Á':'A', 'É':'E', 'Í':'I', 'Ó':'O', 'Ú':'U'}
     for key, value in remplazos.items():
@@ -90,7 +103,7 @@ def run():
         if letras_ocultas == 0:
             is_gameover = True
         
-    print("  VICTORIA!!\n Ganaste")
+    draw_victoria(secret_word)
        
 
         
