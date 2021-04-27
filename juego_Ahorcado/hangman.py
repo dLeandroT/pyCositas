@@ -82,19 +82,18 @@ def run():
     letras_ocultas = len(secret_word)
     hidden_word = ["_" for i in range(letras_ocultas)]
 
+
     # Para puntuacion
     score = 0
-    limite_de_fallos = letras_ocultas * 3
+    limite_de_fallos = letras_ocultas * 2
     fallos = 0
+
 
     # Mapa de ahorcado
     posiciones_horca = [0, 0.14, 0.29, 0.44, 0.59, 0.8]
     progreso_ahorcado = 0
     
     
-
-        
-
     # Gamelooop 
     is_gameover = False
     while not is_gameover:
@@ -106,8 +105,19 @@ def run():
 
         os.system("clear")
         draw_progress(hidden_word, score, progreso_ahorcado)
-        print(progreso_ahorcado)
         letra_ingresada = input("Ingresa una letra:  ").upper()
+
+        # Control de errores
+        if len(letra_ingresada) == 0:
+            os.system("clear")
+            input("\n   ⚠ Recuerda ingresar una letra antes de dar ENTER...")
+        elif len(letra_ingresada) > 1:
+            os.system("clear")
+            input("\n ⚠ Recuerda ingreasr solo UNA letra a la vez...")
+        elif not letra_ingresada.isalpha():
+            os.system("clear")
+            input("\n ⚠ Recuerda que no hay numeros dentro de las palabras...")
+
         quitar_acento(letra_ingresada)
         
         # Comprobar la Letra
@@ -129,8 +139,6 @@ def run():
         elif fallos == limite_de_fallos:
             draw_final(secret_word, score, "./derrota.txt")
             is_gameover = True
-
-
 
 
 
