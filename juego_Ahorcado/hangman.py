@@ -8,7 +8,7 @@ def imprimir(archivo):
     """
     with open(archivo, "r", encoding="utf-8") as f:
         for line in f:
-            print(line)
+            print(line, end="")
         f.close()
 
 
@@ -25,12 +25,15 @@ def draw_bienvenida():
     input("\n\nPresiona ENTER para continuar...")
 
 
-def draw_progress(progress, score):
+def draw_progress(progress, score, progreso_ahorcado):
     os.system("clear")
     print("### A D I V I N A   L A   P A L A B R A ###")
     print("-------------------------------------------")
     print(f"puntaje:   {score}")
-    print("-------------------------------------------\n\n\n", end="\t     ")
+    print("-------------------------------------------")
+    # Draw Ahorcado
+    imprimir(f"./ahorcado/{progreso_ahorcado}.txt")
+    print("\n\n\n", end="\t     ")
     for i in progress:
         print(i, end=" ")
     print("\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n")
@@ -79,16 +82,31 @@ def run():
     letras_ocultas = len(secret_word)
     hidden_word = ["_" for i in range(letras_ocultas)]
 
-    # Para puntuacion 
+    # Para puntuacion
     score = 0
-    incorrectas = 0
     limite_de_fallos = letras_ocultas * 3
+    fallos = 0
+
+    # Mapa de ahorcado
+    posiciones_horca = [0, 0.14, 0.29, 0.44, 0.59, 0.8]
+    progreso_ahorcado = 0
+    
+    
+
+        
 
     # Gamelooop 
     is_gameover = False
     while not is_gameover:
+        # CAlcuar POsicion de la Horca
+        porcentaje = fallos/limite_de_fallos
+        for i in posiciones_horca:
+            if porcentaje > i:
+              progreso_ahorcado = posiciones_horca.index(i)
+
         os.system("clear")
-        draw_progress(hidden_word, score)
+        draw_progress(hidden_word, score, progreso_ahorcado)
+        print(progreso_ahorcado)
         letra_ingresada = input("Ingresa una letra:  ").upper()
         quitar_acento(letra_ingresada)
         
@@ -102,13 +120,13 @@ def run():
                 score += 100
             idx += 1
         if control_puntos == letras_ocultas:
-            incorrectas += 1
+            fallos += 1
 
         # Comprobar si hay victoria
         if letras_ocultas == 0:
             draw_final(secret_word, score, "./victoria.txt")
             is_gameover = True
-        elif incorrectas == limite_de_fallos:
+        elif fallos == limite_de_fallos:
             draw_final(secret_word, score, "./derrota.txt")
             is_gameover = True
 
