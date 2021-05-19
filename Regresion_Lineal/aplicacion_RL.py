@@ -25,15 +25,15 @@ def plot_regression(x, y, b):
     Recibe como parametros x, y, b
     """
 
-    plt.plt.scatter(x, y, color = "g", marker = "O", s=30)
-    y.pred = b[0] + b[1]*x
-    plt.plt.plot(x, y.pred, color = "b")
+    plt.scatter(x, y, color = "g", marker = "o", s=30)
+    y_pred = b[0] + b[1]*x
+    plt.plot(x, y_pred, color = "b")
 
     # Etquetado
     plt.xlabel('x-Independiente')
     plt.ylabel('y-Dependiente')
 
-    plt.plt.show()
+    plt.show()
 
 
 # Funcion Principal
