@@ -1,5 +1,5 @@
 import numpy as np
-import matplotlib.pyplot as p
+import matplotlib.pyplot as plt
 
 def estimate_b0_b1(x, y):
     n = np.size(x)
