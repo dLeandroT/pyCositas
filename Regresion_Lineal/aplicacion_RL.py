@@ -9,7 +9,7 @@ def estimate_b0_b1(x, y):
     m_y = np.mean(y)
 
     # Calcular sumatoria de xy y sumatoria de xx
-    sumatoria_xy = np.sum(x - m_x) * (y - m_y)
+    sumatoria_xy = np.sum((x - m_x) * (y - m_y))
     sumatoria_xx = np.sum(x * (x - m_x))
 
     # Coeficientes de Regresion 
