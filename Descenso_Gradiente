@@ -1,0 +1,29 @@
+from matplotlib import cm
+import numpy as np 
+import matplotlib.pyplot as plt
+
+
+def f(x,y):
+    return x**2 + y**2 
+
+if __name__=='__main__':
+
+    fig, ax = plt.subplots(subplot_kw={"projection":"3d"})
+    
+    res = 100
+
+    x = np.linspace(-4, 4, res)
+    y = np.linspace(-4, 4, res)
+    X, Y= np.meshgrid(x,y)
+
+    Z = f(X,Y)
+
+    surf = ax.plot_surface(X, Y, Z,cmap=cm.cool)
+    fig.colorbar(surf)
+    plt.show()
+
+    level_map =np.linspace(np.min(Z),np.max(Z),res)
+    plt.contourf(X,Y,Z,level_map, cmap=cm.cool)
+    plt.colorbar()
+    plt.title("Descenso del gradiente")
+    plt.show()
